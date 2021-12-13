@@ -1,4 +1,5 @@
-﻿using Quanlyhocsinh.Entities;
+﻿using Quanlyhocsinh.Business;
+using Quanlyhocsinh.Entities;
 using QuanlyhocsinhTHPT.Entities;
 using System;
 using System.Collections.Generic;
@@ -71,10 +72,12 @@ namespace QuanlyhocsinhTHPT.Business
                 Hien1(bd);
             }
         }
-        public void Hientimkiem(LopHoc bd)
+        public void Hientimkiem(LopHoc bd,List<Hocsinh>hocsinhs)
         {//string MaSach,string TenSach,int SoLuongTon,string MaTL,string MaNXB,string MaTG
             Console.WriteLine("║{0,-15}║{1,-25}║{2,-20}║{3,-15}║", "Mã Lớp", "Tên Lớp", "Mã GVCN", "Sĩ Số");
             Console.WriteLine("║{0,-15}║{1,-25}║{2,-20}║{3,-15}║", bd.MaLop, bd.TenLop, bd.MaGVCN, bd.SiSO);
+            HocsinhBLL hs = new HocsinhBLL();
+            hs.HienThiTheoLop(hocsinhs,bd.MaLop);
         }
         public void Hien1(LopHoc bd)
         {//string MaSach,string TenSach,int SoLuongTon,string MaTL,string MaNXB,string MaTG

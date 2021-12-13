@@ -100,6 +100,18 @@ namespace Quanlyhocsinh.Business
                 Hien1(hs);
             }
         }
+        public void HienThiTheoLop(List<Hocsinh> sinhviens,string malop)
+        {
+            Console.Clear();
+            Console.WriteLine("║{0,-15}║{1,-25}║{2,-20}║{3,-15}║{4,-15}║{5,-25}║{6,-15}║", "Mã hs", "Tên hs", "Giới Tính", "Ngày Sinh", "Mã Lớp", "Quê quán", "Số ĐT");
+            foreach (Hocsinh hs in sinhviens)
+            {
+                if(malop.ToUpper().Equals(hs.MaLop.ToUpper()))
+                {
+                    Hien1(hs);
+                }    
+            }
+        }
         public void Hientimkiem(Hocsinh hs)
         {//string MaSach,string TenSach,int SoLuongTon,string MaTL,string MaNXB,string MaTG
             Console.WriteLine("║{0,-15}║{1,-25}║{2,-20}║{3,-15}║{4,-15}║{5,-25}║{6,-15}║", "Mã hs", "Tên hs", "Giới Tính", "Ngày Sinh", "Mã Lớp", "Quê quán", "Số ĐT");
@@ -114,12 +126,19 @@ namespace Quanlyhocsinh.Business
             Hocsinh hstim=new Hocsinh();
             foreach (Hocsinh hs in hocsinhs)
             {
-                if (mahs.Equals(hs.MaHS))
+                if (mahs.Equals(hs.MaHS)|| hs.TenHS.ToUpper().IndexOf( mahs.ToUpper())>0)
                 {
                     hstim= hs;
                 }
             }
             return hstim;
+        }
+        public void Sapxep(List<Hocsinh> hocsinhs)
+        {
+            //hocsinhs.Sort((o1, o2) => o1.TenHS.Split(" ")[o1.TenHS.Split(" ").Length - 1].CompareTo(o2.TenHS.Split(" ")[o2.TenHS.Split(" ").Length - 1]));//Sắp xếp theo tên
+            hocsinhs.Sort((o1, o2) => o1.MaLop.CompareTo(o2.MaLop));//Sắp xếp theo mã lớp
+            HienThi(hocsinhs);
+
         }
         public void Xoa(ref List<Hocsinh> hocsinhs, Hocsinh hs)
         {

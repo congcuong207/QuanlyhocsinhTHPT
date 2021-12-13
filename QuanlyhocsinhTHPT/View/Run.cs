@@ -25,9 +25,9 @@ namespace Quanlyhocsinh.View
             {
                 Console.Clear();
                 Console.WriteLine("\t\t\t\t\t\t╔═══════════════════════════════════════════════════╗");
-                Console.WriteLine("\t\t\t\t\t\t║          CHƯƠNG TRÌNH QUẢN LÝ Sinh Viên           ║");
+                Console.WriteLine("\t\t\t\t\t\t║          CHƯƠNG TRÌNH QUẢN LÝ HỌC SINH            ║");
                 Console.WriteLine("\t\t\t\t\t\t║═══════════════════════════════════════════════════║");
-                Console.WriteLine("\t\t\t\t\t\t║     1. Quản lý sinh viên                          ║");
+                Console.WriteLine("\t\t\t\t\t\t║     1. Quản lý học sinh                           ║");
                 Console.WriteLine("\t\t\t\t\t\t║═══════════════════════════════════════════════════║");
                 Console.WriteLine("\t\t\t\t\t\t║     2. Quản lý giáo viên                          ║");
                 Console.WriteLine("\t\t\t\t\t\t║═══════════════════════════════════════════════════║");
@@ -124,8 +124,12 @@ namespace Quanlyhocsinh.View
                                     sinhvienBLL.Hientimkiem(sinhvienBLL.TimKiem(hocsinhs, Console.ReadLine()));
                                     Console.ReadLine();
                                     break;
+                                case 6:
+                                    sinhvienBLL.Sapxep(hocsinhs);
+                                    Console.ReadLine();
+                                    break;
                             }
-                        } while (chon != 6);
+                        } while (chon != 7);
                         break;
                     case 2:
 
@@ -260,7 +264,7 @@ namespace Quanlyhocsinh.View
                                     break;
                                 case 5:
                                     Console.Write("Nhập mã phòng TH cần tìm: ");
-                                    lophocBLL.Hientimkiem(lophocBLL.TimKiem(lophocs, Console.ReadLine()));
+                                    lophocBLL.Hientimkiem(lophocBLL.TimKiem(lophocs, Console.ReadLine()),hocsinhs);
                                     Console.ReadLine();
                                     break;
                             }

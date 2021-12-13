@@ -89,7 +89,7 @@ namespace Quanlyhocsinh.Business
             Giaovien gvtim = new Giaovien();
             foreach (Giaovien gv in giaoviens)
             {
-                if (maGV.Equals(gv.MaGV))
+                if (maGV.Equals(gv.MaGV) || gv.TenGV.ToUpper().IndexOf(maGV.ToUpper()) > 0)
                 {
                     gvtim = gv;
                 }

@@ -82,7 +82,7 @@ namespace Quanlyhocsinh.Business
             Monhoc mhtim = new Monhoc();
             foreach (Monhoc mh in monhocs)
             {
-                if (maMH.Equals(mh.MaMH))
+                if (maMH.Equals(mh.MaMH) || mh.TenMH.ToUpper().IndexOf(maMH.ToUpper()) > 0)
                 {
                     mhtim = mh;
                 }
