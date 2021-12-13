@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Quanlyhocsinh.Entities
+namespace QuanlyhocsinhTHPT.Entities
 {
     class Hocsinh
     {

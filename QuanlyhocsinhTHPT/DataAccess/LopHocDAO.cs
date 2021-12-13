@@ -1,4 +1,5 @@
-﻿using QuanlyhocsinhTHPT.Entities;
+﻿using QuanlyhocsinhTHPT.DataAccess.ServiceInterface;
+using QuanlyhocsinhTHPT.Entities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace QuanlyhocsinhTHPT.DataAccess
 {
-    class LopHocDAO
+    class ILopHocDAO:ILophocDAO
     {
         public void GhiThongTin(List<LopHoc> lopHocs)
         {

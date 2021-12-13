@@ -1,11 +1,12 @@
 ﻿using Quanlyhocsinh.Entities;
+using QuanlyhocsinhTHPT.Business.ServiceInterface;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Quanlyhocsinh.Business
 {
-    class GiaovienBLL
+    class GiaovienBLL:IGiaovienBLL
     {
         public void ThemGiaoVien(ref List<Giaovien> giaoviens)
         {
@@ -69,16 +70,26 @@ namespace Quanlyhocsinh.Business
         public void HienThi(List<Giaovien> giaoviens)
         {
             Console.Clear();
+            Console.WriteLine("╔══════════════════════════════════════════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║                                       Danh sách giáo viên                                    ║");
+            Console.WriteLine("║══════════════════════════════════════════════════════════════════════════════════════════════║");
             Console.WriteLine("║{0,-15}║{1,-25}║{2,-20}║{3,-15}║{4,-15}║", "Mã GV", "Tên GV", "Giới Tính", "Ngày Sinh", "Số ĐT");
             foreach (Giaovien sv in giaoviens)
             {
                 Hien1(sv);
             }
+            Console.WriteLine("╚══════════════════════════════════════════════════════════════════════════════════════════════╝");
+
         }
         public void Hientimkiem(Giaovien gv)
         {//string MaSach,string TenSach,int SoLuongTon,string MaTL,string MaNXB,string MaTG
+            Console.WriteLine("╔══════════════════════════════════════════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║                                       Danh sách giáo viên                                    ║");
+            Console.WriteLine("║══════════════════════════════════════════════════════════════════════════════════════════════║");
             Console.WriteLine("║{0,-15}║{1,-25}║{2,-20}║{3,-15}║{4,-15}║", "Mã GV", "Tên GV", "Giới Tính", "Ngày Sinh", "Số ĐT");
             Console.WriteLine("║{0,-15}║{1,-25}║{2,-20}║{3,-15}║{4,-15}║", gv.MaGV, gv.TenGV, gv.GioTinh, gv.NamSinh.ToString("yyyy/MM/dd"), gv.SoDT);
+            Console.WriteLine("╚══════════════════════════════════════════════════════════════════════════════════════════════╝");
+
         }
         public void Hien1(Giaovien gv)
         {//string MaSach,string TenSach,int SoLuongTon,string MaTL,string MaNXB,string MaTG

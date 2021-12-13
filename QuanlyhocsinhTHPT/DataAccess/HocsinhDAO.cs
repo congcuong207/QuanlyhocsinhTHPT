@@ -1,4 +1,6 @@
 ﻿using Quanlyhocsinh.Entities;
+using QuanlyhocsinhTHPT.DataAccess.ServiceInterface;
+using QuanlyhocsinhTHPT.Entities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,7 +8,7 @@ using System.Text;
 
 namespace Quanlyhocsinh.DataAccess
 {
-    class HocsinhDAO
+    class HocsinhDAO:IHocsinhDAO
     {
         public void GhiThongTin(List<Hocsinh> hocsinhs)
         {

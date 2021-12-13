@@ -1,11 +1,13 @@
 ﻿using Quanlyhocsinh.Entities;
+using QuanlyhocsinhTHPT.Business.ServiceInterface;
+using QuanlyhocsinhTHPT.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Quanlyhocsinh.Business
 {
-    class BangdiemBLL
+    class BangdiemBLL:IBangdiemBLL
     {
         public void ThemBangDiem(ref List<Bangdiem> bangdiems,List<Monhoc> monhocs, List<Hocsinh> hocsinhs)
         {
@@ -73,16 +75,28 @@ namespace Quanlyhocsinh.Business
         public void HienThi(List<Bangdiem> bangdiems)
         {
             Console.Clear();
-            Console.WriteLine("║{0,-15}║{1,-25}║{2,-20}║{3,-15}║{4,-15}║", "Mã SV", "Tên SV", "Mã MH", "Điểm QT", "Điểm KTHP");
+            Console.WriteLine("╔══════════════════════════════════════════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║                                       Danh sách bảng điểm                                    ║");
+            Console.WriteLine("║══════════════════════════════════════════════════════════════════════════════════════════════║");
+
+            Console.WriteLine("║{0,-15}║{1,-25}║{2,-20}║{3,-15}║{4,-15}║", "Mã SV", "Tên SV", "Mã MH", "Điểm Kì 1", "Điểm Kì 2");
             foreach (Bangdiem bd in bangdiems)
             {
                 Hien1(bd);
             }
+            Console.WriteLine("╚══════════════════════════════════════════════════════════════════════════════════════════════╝");
         }
         public void Hientimkiem(Bangdiem bd)
         {//string MaSach,string TenSach,int SoLuongTon,string MaTL,string MaNXB,string MaTG
-            Console.WriteLine("║{0,-15}║{1,-25}║{2,-20}║{3,-15}║{4,-15}║", "Mã SV", "Tên SV", "Mã MH", "Điểm QT", "Điểm KTHP");
+            Console.WriteLine("╔══════════════════════════════════════════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║                                       Danh sách bảng điểm                                    ║");
+            Console.WriteLine("║══════════════════════════════════════════════════════════════════════════════════════════════║");
+
+            Console.WriteLine("║{0,-15}║{1,-25}║{2,-20}║{3,-15}║{4,-15}║", "Mã SV", "Tên SV", "Mã MH", "Điểm Kì 1", "Điểm Kì 2");
+
             Console.WriteLine("║{0,-15}║{1,-25}║{2,-20}║{3,-15}║{4,-15}║", bd.MaHS, bd.TenHS, bd.MaMH, bd.DiemQT, bd.DiemKTHP);
+            Console.WriteLine("╚══════════════════════════════════════════════════════════════════════════════════════════════╝");
+
         }
         public void Hien1(Bangdiem bd)
         {//string MaSach,string TenSach,int SoLuongTon,string MaTL,string MaNXB,string MaTG

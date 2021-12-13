@@ -173,11 +173,13 @@ namespace Quanlyhocsinh.View
                 Console.WriteLine("\t\t\t\t\t\t║═══════════════════════════════════════║");
                 Console.WriteLine("\t\t\t\t\t\t║     5. Tìm lớp học                    ║");
                 Console.WriteLine("\t\t\t\t\t\t║═══════════════════════════════════════║");
-                Console.WriteLine("\t\t\t\t\t\t║     6. Quay lại                       ║");
+                Console.WriteLine("\t\t\t\t\t\t║     6. Thống kê                       ║");
+                Console.WriteLine("\t\t\t\t\t\t║═══════════════════════════════════════║");
+                Console.WriteLine("\t\t\t\t\t\t║     7. Quay lại                       ║");
                 Console.WriteLine("\t\t\t\t\t\t║═══════════════════════════════════════║");
                 Console.WriteLine("\t\t\t\t\t\t║     Chọn:                             ║");
                 Console.WriteLine("\t\t\t\t\t\t╚═══════════════════════════════════════╝");
-                Console.SetCursorPosition(60, 15);
+                Console.SetCursorPosition(60, 17);
                 try
                 {
                     n = int.Parse(Console.ReadLine());//nhập n
@@ -186,7 +188,7 @@ namespace Quanlyhocsinh.View
                 {
 
                 }
-            } while (n < 1 || n > 6);//nếu n <1 hoặc lớn hơn 7 thì lặp lại
+            } while (n < 1 || n > 7);//nếu n <1 hoặc lớn hơn 7 thì lặp lại
             return n;
         }
     }

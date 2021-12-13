@@ -1,8 +1,11 @@
-﻿using Quanlyhocsinh.Business;
+﻿
+using Quanlyhocsinh.Business;
 using Quanlyhocsinh.DataAccess;
 using Quanlyhocsinh.Entities;
 using QuanlyhocsinhTHPT.Business;
+using QuanlyhocsinhTHPT.Business.ServiceInterface;
 using QuanlyhocsinhTHPT.DataAccess;
+using QuanlyhocsinhTHPT.DataAccess.ServiceInterface;
 using QuanlyhocsinhTHPT.Entities;
 using System;
 using System.Collections.Generic;
@@ -53,16 +56,16 @@ namespace Quanlyhocsinh.View
             } while (n < 1 || n > 6);//nếu n <1 hoặc lớn hơn 5 thì lặp lại
             return n;
         }
-        BangdiemBLL bangdiemBLL;
-        GiaovienBLL giaovienBLL;
-        MonhocBLL monhocBLL;
-        HocsinhBLL sinhvienBLL;
-        BangdiemDAO bangdiemDAO;
-        GiaovienDAO giaovienDAO;
-        MonhocDAO monhocDAO;
-        HocsinhDAO hocsinhDAO;
-        LopHocBLL lophocBLL;
-        LopHocDAO lophocDAO;
+        IBangdiemBLL bangdiemBLL;
+        IGiaovienBLL giaovienBLL;
+        IMonhocBLL monhocBLL;
+        IHocsinhBLL sinhvienBLL;
+        IBangdiemDAO bangdiemDAO;
+        IGiaovienDAO giaovienDAO;
+        IMonhocDAO monhocDAO;
+        IHocsinhDAO hocsinhDAO;
+        ILophocBLL lophocBLL;
+        ILopHocDAO lophocDAO;
         Menu menu;
         public void Init()
         {
@@ -76,7 +79,7 @@ namespace Quanlyhocsinh.View
              giaovienDAO = new GiaovienDAO();
              monhocDAO = new MonhocDAO();
             hocsinhDAO = new HocsinhDAO();
-            lophocDAO = new LopHocDAO();
+            lophocDAO = new ILopHocDAO();
             hocsinhs = hocsinhDAO.LayDS();
             giaoviens = giaovienDAO.LayDS();
             lophocs= lophocDAO.LayDS();
@@ -149,17 +152,17 @@ namespace Quanlyhocsinh.View
                                     Console.ReadLine();
                                     break;
                                 case 3:
-                                    Console.Write("Nhập mã TB cần sửa: ");
+                                    Console.Write("Nhập mã GV cần sửa: ");
                                     giaovienBLL.Sua(ref giaoviens, Console.ReadLine());
                                     giaovienDAO.GhiThongTin(giaoviens);
                                     break;
                                 case 4:
-                                    Console.Write("Nhập mã TB cần xóa: ");
+                                    Console.Write("Nhập mã GV cần xóa: ");
                                     giaovienBLL.Xoa(ref giaoviens, giaovienBLL.TimKiem(giaoviens, Console.ReadLine()));
                                     giaovienDAO.GhiThongTin(giaoviens);
                                     break;
                                 case 5:
-                                    Console.Write("Nhập mã SV cần tìm: ");
+                                    Console.Write("Nhập mã GV cần tìm: ");
                                     giaovienBLL.Hientimkiem(giaovienBLL.TimKiem(giaoviens, Console.ReadLine()));
                                     Console.ReadLine();
                                     break;
@@ -184,17 +187,17 @@ namespace Quanlyhocsinh.View
                                     Console.ReadLine();
                                     break;
                                 case 3:
-                                    Console.Write("Nhập mã phòng TH cần sửa: ");
+                                    Console.Write("Nhập mã môn học cần sửa: ");
                                     monhocBLL.Sua(ref monhocs, Console.ReadLine());
                                     monhocDAO.GhiThongTin(monhocs);
                                     break;
                                 case 4:
-                                    Console.Write("Nhập mã phòng TH cần xóa: ");
+                                    Console.Write("Nhập mã môn học cần xóa: ");
                                     monhocBLL.Xoa(ref monhocs, monhocBLL.TimKiem(monhocs, Console.ReadLine()));
                                     monhocDAO.GhiThongTin(monhocs);
                                     break;
                                 case 5:
-                                    Console.Write("Nhập mã phòng TH cần tìm: ");
+                                    Console.Write("Nhập mã môn học cần tìm: ");
                                     monhocBLL.Hientimkiem(monhocBLL.TimKiem(monhocs, Console.ReadLine()));
                                     Console.ReadLine();
                                     break;
@@ -219,17 +222,17 @@ namespace Quanlyhocsinh.View
                                     Console.ReadLine();
                                     break;
                                 case 3:
-                                    Console.Write("Nhập mã phòng TH cần trả: ");
+                                    Console.Write("Nhập mã bảng điểm cần sửa: ");
                                     bangdiemBLL.Sua(ref bangdiems,monhocs, hocsinhs, Console.ReadLine());
                                     bangdiemDAO.GhiThongTin(bangdiems);
                                     break;
                                 case 4:
-                                    Console.Write("Nhập mã phòng TH cần xóa: ");
+                                    Console.Write("Nhập mã bảng điểm cần xóa: ");
                                     bangdiemBLL.Xoa(ref bangdiems, bangdiemBLL.TimKiem(bangdiems, Console.ReadLine()));
                                     bangdiemDAO.GhiThongTin(bangdiems);
                                     break;
                                 case 5:
-                                    Console.Write("Nhập mã phòng TH cần tìm: ");
+                                    Console.Write("Nhập mã bảng điểm cần tìm: ");
                                     bangdiemBLL.Hientimkiem(bangdiemBLL.TimKiem(bangdiems, Console.ReadLine()));
                                     Console.ReadLine();
                                     break;
@@ -253,22 +256,27 @@ namespace Quanlyhocsinh.View
                                     Console.ReadLine();
                                     break;
                                 case 3:
-                                    Console.Write("Nhập mã lớp cần tìm: ");
+                                    Console.Write("Nhập mã lớp cần sửa: ");
                                     lophocBLL.Sua(ref lophocs, giaoviens, hocsinhs, Console.ReadLine());
                                     lophocDAO.GhiThongTin(lophocs);
                                     break;
                                 case 4:
-                                    Console.Write("Nhập mã phòng TH cần xóa: ");
+                                    Console.Write("Nhập mã lớp cần xóa: ");
                                     lophocBLL.Xoa(ref lophocs, lophocBLL.TimKiem(lophocs, Console.ReadLine()));
                                     lophocDAO.GhiThongTin(lophocs);
                                     break;
                                 case 5:
-                                    Console.Write("Nhập mã phòng TH cần tìm: ");
+                                    Console.Write("Nhập mã lớp cần tìm: ");
                                     lophocBLL.Hientimkiem(lophocBLL.TimKiem(lophocs, Console.ReadLine()),hocsinhs);
                                     Console.ReadLine();
                                     break;
+                                case 6:
+                                    Console.Write("Nhập mã lớp cần thống kê: ");
+                                    lophocBLL.Thongke(hocsinhs,bangdiems,Console.ReadLine());   
+                                    Console.ReadLine();
+                                    break;
                             }
-                        } while (chon != 6);
+                        } while (chon != 7);
                         break;
                     case 6:
                         Environment.Exit(0);

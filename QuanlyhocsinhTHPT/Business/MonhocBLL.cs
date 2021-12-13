@@ -1,11 +1,12 @@
 ﻿using Quanlyhocsinh.Entities;
+using QuanlyhocsinhTHPT.Business.ServiceInterface;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Quanlyhocsinh.Business
 {
-    class MonhocBLL
+    class MonhocBLL:IMonhocBLL
     {
         public void ThemMonHoc(ref List<Monhoc> monhocs,List<Giaovien> giaoviens)
         {
@@ -46,12 +47,12 @@ namespace Quanlyhocsinh.Business
                 mh.MaGV = Console.ReadLine();
                 foreach(Giaovien gv in giaoviens)
                 {
-                    if (gv.MaGV.ToUpper().Contains(mh.MaGV.ToUpper()))
+                    if (gv.MaGV.ToUpper().Equals(mh.MaGV.ToUpper()))
                     {
                         kt = true;
                     }
                 }
-                if (kt && mh.MaGV.Trim()=="")
+                if (kt && mh.MaGV.Trim()!="")
                 {
                     break;
                 }
@@ -62,16 +63,25 @@ namespace Quanlyhocsinh.Business
         public void HienThi(List<Monhoc> monhocs)
         {
             Console.Clear();
+            Console.WriteLine("╔══════════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║                      Danh sách môn học                       ║");
+            Console.WriteLine("║══════════════════════════════════════════════════════════════║");
             Console.WriteLine("║{0,-15}║{1,-25}║{2,-20}║", "Mã MH", "Tên MH", "Mã GV");
             foreach (Monhoc mh in monhocs)
             {
                 Hien1(mh);
             }
+            Console.WriteLine("╚══════════════════════════════════════════════════════════════╝");
         }
         public void Hientimkiem(Monhoc mh)
         {
+            Console.WriteLine("╔══════════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║                      Danh sách môn học                       ║");
+            Console.WriteLine("║══════════════════════════════════════════════════════════════║");
             Console.WriteLine("║{0,-15}║{1,-25}║{2,-20}║", "Mã MH", "Tên MH", "Mã GV");
             Console.WriteLine("║{0,-15}║{1,-25}║{2,-20}║", mh.MaMH, mh.TenMH, mh.MaGV);
+            Console.WriteLine("╚══════════════════════════════════════════════════════════════╝");
+
         }
         public void Hien1(Monhoc mh)
         {

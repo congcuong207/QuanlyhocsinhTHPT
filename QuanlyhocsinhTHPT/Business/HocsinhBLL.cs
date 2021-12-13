@@ -1,4 +1,5 @@
 ﻿using Quanlyhocsinh.Entities;
+using QuanlyhocsinhTHPT.Business.ServiceInterface;
 using QuanlyhocsinhTHPT.Entities;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace Quanlyhocsinh.Business
 {
-    class HocsinhBLL
+    class HocsinhBLL:IHocsinhBLL
     {
         public void ThemHocSinh(ref List<Hocsinh> hocsinhs,List<LopHoc> lopHocs)
         {
@@ -94,15 +95,22 @@ namespace Quanlyhocsinh.Business
         public void HienThi(List<Hocsinh> sinhviens)
         {
             Console.Clear();
-            Console.WriteLine("║{0,-15}║{1,-25}║{2,-20}║{3,-15}║{4,-15}║{5,-25}║{6,-15}║", "Mã hs", "Tên hs", "Giới Tính", "Ngày Sinh", "Mã Lớp", "Quê quán","Số ĐT");
+            Console.WriteLine("╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║                                                                 Danh sách học sinh                                                     ║");
+            Console.WriteLine("║════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════║");
+            Console.WriteLine("║{0,-15}║{1,-25}║{2,-20}║{3,-15}║{4,-15}║{5,-25}║{6,-15}║", "Mã hs", "Tên hs", "Giới Tính", "Ngày Sinh", "Mã Lớp", "Quê quán", "Số ĐT");
             foreach (Hocsinh hs in sinhviens)
             {
                 Hien1(hs);
             }
+            Console.WriteLine("╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝");
         }
         public void HienThiTheoLop(List<Hocsinh> sinhviens,string malop)
         {
             Console.Clear();
+            Console.WriteLine("╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║                                                                 Danh sách học sinh                                                     ║");
+            Console.WriteLine("║════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════║");
             Console.WriteLine("║{0,-15}║{1,-25}║{2,-20}║{3,-15}║{4,-15}║{5,-25}║{6,-15}║", "Mã hs", "Tên hs", "Giới Tính", "Ngày Sinh", "Mã Lớp", "Quê quán", "Số ĐT");
             foreach (Hocsinh hs in sinhviens)
             {
@@ -111,11 +119,16 @@ namespace Quanlyhocsinh.Business
                     Hien1(hs);
                 }    
             }
+            Console.WriteLine("╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝");
         }
         public void Hientimkiem(Hocsinh hs)
         {//string MaSach,string TenSach,int SoLuongTon,string MaTL,string MaNXB,string MaTG
+            Console.WriteLine("╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║                                                                 Danh sách học sinh                                                     ║");
+            Console.WriteLine("║════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════║");
             Console.WriteLine("║{0,-15}║{1,-25}║{2,-20}║{3,-15}║{4,-15}║{5,-25}║{6,-15}║", "Mã hs", "Tên hs", "Giới Tính", "Ngày Sinh", "Mã Lớp", "Quê quán", "Số ĐT");
             Console.WriteLine("║{0,-15}║{1,-25}║{2,-20}║{3,-15}║{4,-15}║{5,-25}║{6,-15}║", hs.MaHS, hs.TenHS, hs.GioiTinh, hs.NgaySinh.ToString("yyyy/MM/dd"), hs.MaLop, hs.QueQuan,hs.SoDT);
+            Console.WriteLine("╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝");
         }
         public void Hien1(Hocsinh hs)
         {//string MaSach,string TenSach,int SoLuongTon,string MaTL,string MaNXB,string MaTG
